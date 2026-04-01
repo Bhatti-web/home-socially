@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socially - Desktop & Mobile Fixed</title>
+    <link rel="stylesheet" href="animation.css">
+    <link rel="icon" type="image/x-icon" href="fav.png">
+
+</head>
+<body>
+
+    <div class="hero">
+        <nav>
+            <!-- Logo Section -->
+            <div class="logo-wrapper">
+                <img class="logo" src="social.png" alt="logo">
+            </div>
+
+            <!-- Mobile Controls (Hamburger + Button) -->
+            <div class="mobile-controls">
+                <div class="hamburger" id="menuBtn">
+                    <span></span><span></span><span></span>
+                </div>
+
+                <!-- Navigation Links -->
+                <ul id="navLinks">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#">How it works</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li class="mobile-login"><a href="#" class="login-highlight">Log in</a></li>
+                </ul>
+
+                <!-- Desktop Buttons -->
+                <div class="nav-btns">
+                    <a href="#" class="login-btn">Log in</a>
+                    <a href="#" class="btn download-btn">Download App</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero-container">
+            <div class="content scroll-reveal zoom-out">
+                <h1>Make<br>New Friends</h1>
+                <p>Socially is a new social media platform to make a new friends online. Scroll down to see the magic!</p>
+                <a href="#features" class="btn">Join Now</a>
+            </div>
+            
+            <div class="image-box scroll-reveal zoom-in">
+                <img src="girl-image.jpg" class="feature-img" alt="hero-image">
+            </div>
+        </div>
+    </div>
+
+    <section class="features" id="features">
+        <h2 class="scroll-reveal zoom-in">Amazing Features</h2>
+        <div class="feature-grid">
+            <div class="feature-box scroll-reveal zoom-in">
+                <h3>Global Chat</h3>
+                <p>Connect with people globally with one click.</p>
+            </div>
+            <div class="feature-box scroll-reveal zoom-in" style="transition-delay: 0.2s;">
+                <h3>Privacy Control</h3>
+                <p>Your data is safe and encrypted with us.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.onclick = (e) => {
+            navLinks.classList.toggle('active');
+            menuBtn.classList.toggle('toggle');
+            e.stopPropagation();
+        };
+
+        document.onclick = (e) => {
+            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuBtn.classList.remove('toggle');
+            }
+        };
+
+        function reveal() {
+            const reveals = document.querySelectorAll(".scroll-reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                let windowHeight = window.innerHeight;
+                let elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) reveals[i].classList.add("active");
+            }
+        }
+        window.onscroll = reveal;
+        window.onload = reveal;
+    </script>
+</body>
+</html>
